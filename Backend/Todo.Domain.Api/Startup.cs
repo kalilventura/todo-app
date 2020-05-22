@@ -27,8 +27,8 @@ namespace Todo.Domain.Api
         {
             services.AddControllers();
 
-            //services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
-            services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
+            services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+            //services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
             services.AddTransient<ITodoRepository, TodoRepository>();
             services.AddTransient<TodoHandler, TodoHandler>();
@@ -41,7 +41,7 @@ namespace Todo.Domain.Api
                    options.TokenValidationParameters = new TokenValidationParameters
                    {
                        ValidateIssuer = true,
-                       // Onde será validado
+                       // Onde sera validado
                        ValidIssuer = "https://securetoken.google.com/todoapi-d5966",
                        ValidateAudience = true,
                        ValidAudience = "todoapi-d5966",
