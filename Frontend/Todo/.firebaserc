@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todoapi-d5966": {
+      "hosting": {
+        "Todo": [
+          "todoapi-d5966"
+        ]
+      }
+    }
+  }
+}
