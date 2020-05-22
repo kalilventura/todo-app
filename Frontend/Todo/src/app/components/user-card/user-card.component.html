@@ -1,7 +1,7 @@
 <div class="user-card">
-  <img class="user-image" src="https://placehold.it/200" alt="">
+  <img class="user-image" src="{{user.picture}}" alt="{{user.name}}">
   <br>
-  Usuario
+  {{user.name}}
   <br>
   <small><a (click)="logout()">Sair</a></small>
 </div>
