@@ -11,11 +11,11 @@ import { ButtonComponent } from './components/button/button.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AllComponent } from './pages/all/all.component';
 import { TodayComponent } from './pages/today/today.component';
 import { TomorrowComponent } from './pages/tomorrow/tomorrow.component';
 import { NewComponent } from './pages/new/new.component';
-import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -31,19 +31,19 @@ import { environment } from '../environments/environment';
     LoginComponent,
     UserCardComponent,
     TabsComponent,
+    TodoListComponent,
     AllComponent,
     TodayComponent,
     TomorrowComponent,
-    NewComponent,
-    TodoListComponent
+    NewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

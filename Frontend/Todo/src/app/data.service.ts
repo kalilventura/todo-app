@@ -5,15 +5,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  baseUrl = 'http://localhost:5000';
-  constructor(private http: HttpClient) { }
+  public baseUrl = "https://localhost:5001";
 
-  composeHeaders(token) {
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  public composeHeaders(token) {
     if (token) {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       return headers;
-    }
-    else {
+    } else {
       return null;
     }
   }

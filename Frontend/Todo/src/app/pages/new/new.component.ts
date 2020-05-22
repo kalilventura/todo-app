@@ -1,7 +1,8 @@
-import { Router } from '@angular/router';
-import { DataService } from './../../data.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DataService } from 'src/app/data.service';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-new',
@@ -9,12 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private serivce: DataService,
-    private router: Router
+    private service: DataService,
+    private router: Router,
+    private afAuth: AngularFireAuth,
   ) {
     this.form = this.fb.group({
       title: ['', Validators.compose([
@@ -26,12 +28,15 @@ export class NewComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
-
-  submit() {
-    this.serivce.postTodo(this.form.value, localStorage.getItem('token')).subscribe(res => {
-      this.router.navigateByUrl('/');
-    }, err => console.error(err));
+  ngOnInit(): void {
   }
 
+  submit() {
+    this.afAuth.idToken.subscribe(token => {
+      this.service.postTodo(this.form.value, token)
+        .subscribe(res => {
+          this.router.navigateByUrl("/");
+        });
+    });
+  }
 }

@@ -7,15 +7,18 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  user: any = {
-    name: '',
-    picture: ''
+  public user: any = {
+    name: "",
+    picture: "https://placehold.it/200",
+
   };
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(
+    private afAuth: AngularFireAuth,
+  ) { }
 
   ngOnInit(): void {
-    this.afAuth.user.subscribe(data => {
+    this.afAuth.user.subscribe((data) => {
       if (data) {
         this.user.name = data.displayName;
         this.user.picture = data.photoURL;

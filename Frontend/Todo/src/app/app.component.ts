@@ -4,11 +4,14 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent implements OnInit {
-
-  constructor(private afAuth: AngularFireAuth, private router: Router) { }
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+  ) {
+  }
 
   ngOnInit(): void {
     this.afAuth.onAuthStateChanged(data => {
@@ -19,6 +22,6 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.afAuth.idToken.subscribe(token => sessionStorage.setItem('token', token));
+    this.afAuth.idToken.subscribe(token => console.log(token));
   }
 }
