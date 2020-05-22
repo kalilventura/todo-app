@@ -48,6 +48,18 @@ namespace Todo.Domain.Api
                        ValidateLifetime = true
                    };
                });
+
+            services.AddCors(options =>
+         {
+             options.AddPolicy("AllowAllHeaders",
+                 builder =>
+                 {
+                     builder
+                         .AllowAnyOrigin()
+                         .AllowAnyHeader()
+                         .AllowAnyMethod();
+                 });
+         });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,12 +71,13 @@ namespace Todo.Domain.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(x =>
-            {
-                x.AllowAnyOrigin();
-                x.AllowAnyMethod();
-                x.AllowAnyHeader();
-            });
+            app.UseCors("AllowAllHeaders");
+            // app.UseCors(x =>
+            // {
+            //     x.AllowAnyOrigin();
+            //     x.AllowAnyMethod();
+            //     x.AllowAnyHeader();
+            // });
 
             app.UseAuthentication();
             app.UseAuthorization();

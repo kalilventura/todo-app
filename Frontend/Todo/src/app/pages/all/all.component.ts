@@ -1,3 +1,4 @@
+import { DataService } from './../../data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all.component.css']
 })
 export class AllComponent implements OnInit {
-
-  constructor() { }
+  todos: any[] = [];
+  constructor(private service: DataService) { }
 
   ngOnInit(): void {
+    this.service.getAllTodos(localStorage.getItem('token')).subscribe((data: any) => this.todos = data);
   }
 
 }

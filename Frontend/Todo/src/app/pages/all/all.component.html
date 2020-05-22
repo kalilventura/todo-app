@@ -1,1 +1,4 @@
-<p>all works!</p>
+<i class="fa fa-spinner fa-spin fa-2x" *ngIf="!todos"></i>
+<ul *ngFor="let todo of todos">
+  <li>{{todo.title}}</li>
+</ul>
