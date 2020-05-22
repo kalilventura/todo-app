@@ -15,6 +15,11 @@ import { TomorrowComponent } from './pages/tomorrow/tomorrow.component';
 import { NewComponent } from './pages/new/new.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,9 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
