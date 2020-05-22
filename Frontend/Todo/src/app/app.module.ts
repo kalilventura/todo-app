@@ -13,6 +13,7 @@ import { AllComponent } from './pages/all/all.component';
 import { TodayComponent } from './pages/today/today.component';
 import { TomorrowComponent } from './pages/tomorrow/tomorrow.component';
 import { NewComponent } from './pages/new/new.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewComponent } from './pages/new/new.component';
     AllComponent,
     TodayComponent,
     TomorrowComponent,
-    NewComponent
+    NewComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
