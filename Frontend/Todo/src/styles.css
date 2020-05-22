@@ -20,3 +20,25 @@ a :hover {
   color: #fa5b70;
   transition: color 1s;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.container {
+  width: 900px;
+  background-color: #fff;
+  background-image: url("./assets/icon.png");
+  background-repeat: no-repeat;
+  background-position-x: -100px;
+  background-position-y: -100px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.inner-container {
+  margin: 25px;
+}
