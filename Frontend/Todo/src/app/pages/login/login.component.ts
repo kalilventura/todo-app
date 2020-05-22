@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private afAuth: AngularFireAuth) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   login() {
     this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
