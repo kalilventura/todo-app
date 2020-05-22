@@ -2,22 +2,23 @@
   <ul class="tabs">
     <li>
       <h1>
-        <a>Hoje</a>
+        <!-- routerLinkActiveOptions só será selecionado quando a rota for exata -->
+        <a routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Hoje</a>
       </h1>
     </li>
     <li>
       <h1>
-        <a>Amanhã</a>
+        <a routerLink="/tomorrow" routerLinkActive="selected">Amanhã</a>
       </h1>
     </li>
     <li>
       <h1>
-        <a>Todas</a>
+        <a routerLink="/all" routerLinkActive="selected">Todas</a>
       </h1>
     </li>
     <li>
       <h1>
-        <a>Nova</a>
+        <a routerLink="/new" routerLinkActive="selected">Nova</a>
       </h1>
     </li>
   </ul>
