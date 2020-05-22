@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.afAuth.onAuthStateChanged(data => {
       if (data) {
-        console.log(data);
         this.router.navigateByUrl('/');
       } else {
         this.router.navigateByUrl('/login');
