@@ -8,6 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import { ButtonComponent } from './components/button/button.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { TabsComponent } from './components/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     CardComponent,
     ButtonComponent,
     LoginComponent,
-    UserCardComponent
+    UserCardComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
