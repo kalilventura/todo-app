@@ -25,8 +25,6 @@ namespace Todo.Domain.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
             //services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
@@ -49,6 +47,12 @@ namespace Todo.Domain.Api
                    };
                });
 
+            services.AddCors(builder =>
+            {
+                builder.AddPolicy("CorsPolice", cors => cors.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,10 +60,11 @@ namespace Todo.Domain.Api
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
+            else
+                app.UseHttpsRedirection();
 
-            app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors();
+            app.UseCors("CorsPolice");
             app.UseAuthentication();
             app.UseAuthorization();
 

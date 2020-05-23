@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: 'todoapi-d5966.appspot.com',
     messagingSenderId: '606311640424',
     appId: '1:606311640424:web:b02dd3ce602b0ce89cbadd'
-  }
+  },
+  baseUrlApi: 'http://localhost:5000'
 };
 
 /*
