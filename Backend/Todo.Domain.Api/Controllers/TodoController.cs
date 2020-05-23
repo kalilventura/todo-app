@@ -15,8 +15,6 @@ namespace Todo.Domain.Api.Controllers
     [Route("v1/todos")]
     public class TodoController : ControllerBase
     {
-
-        [Route("")]
         [HttpGet]
         public IEnumerable<TodoItem> GetAll(
             [FromServices] ITodoRepository repository)
@@ -25,8 +23,8 @@ namespace Todo.Domain.Api.Controllers
             return repository.GetAll(user);
         }
 
-        [Route("done")]
         [HttpGet]
+        [Route("done")]
         public IEnumerable<TodoItem> GetAllDone(
             [FromServices] ITodoRepository repository)
         {
@@ -34,8 +32,8 @@ namespace Todo.Domain.Api.Controllers
             return repository.GetAllDone(user);
         }
 
-        [Route("done/today")]
         [HttpGet]
+        [Route("done/today")]
         public IEnumerable<TodoItem> GetDoneForToday(
                     [FromServices] ITodoRepository repository)
         {
@@ -47,8 +45,8 @@ namespace Todo.Domain.Api.Controllers
             );
         }
 
-        [Route("done/tomorrow")]
         [HttpGet]
+        [Route("done/tomorrow")]
         public IEnumerable<TodoItem> GetDoneForTomorrow(
                     [FromServices] ITodoRepository repository)
         {
@@ -60,8 +58,8 @@ namespace Todo.Domain.Api.Controllers
             );
         }
 
-        [Route("undone")]
         [HttpGet]
+        [Route("undone")]
         public IEnumerable<TodoItem> GetAllUndone(
             [FromServices] ITodoRepository repository)
         {
@@ -69,8 +67,8 @@ namespace Todo.Domain.Api.Controllers
             return repository.GetAllUndone(user);
         }
 
-        [Route("undone/tomorrow")]
         [HttpGet]
+        [Route("undone/tomorrow")]
         public IEnumerable<TodoItem> GetUndoneForTomorrow(
                     [FromServices] ITodoRepository repository)
         {
@@ -82,41 +80,39 @@ namespace Todo.Domain.Api.Controllers
             );
         }
 
-        [Route("")]
         [HttpPost]
         public GenericCommandResult Create(
-            [FromBody]CreateTodoCommand command,
+            [FromBody] CreateTodoCommand command,
             [FromServices] TodoHandler handler)
         {
             command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
 
-        [Route("")]
         [HttpPut]
         public GenericCommandResult Update(
-           [FromBody]UpdateTodoCommand command,
-           [FromServices]TodoHandler handler)
+           [FromBody] UpdateTodoCommand command,
+           [FromServices] TodoHandler handler)
         {
             command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
 
+        [HttpPut]
         [Route("mark-as-done")]
-        [HttpPut]
         public GenericCommandResult MarkAsDone(
-            [FromBody]MarkTodoAsDoneCommand command,
-            [FromServices]TodoHandler handler)
+            [FromBody] MarkTodoAsDoneCommand command,
+            [FromServices] TodoHandler handler)
         {
             command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
 
-        [Route("mark-as-undone")]
         [HttpPut]
+        [Route("mark-as-undone")]
         public GenericCommandResult MarkAsUndone(
-            [FromBody]MarkTodoAsUndoneCommand command,
-            [FromServices]TodoHandler handler)
+            [FromBody] MarkTodoAsUndoneCommand command,
+            [FromServices] TodoHandler handler)
         {
             command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);

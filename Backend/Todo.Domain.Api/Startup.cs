@@ -49,17 +49,6 @@ namespace Todo.Domain.Api
                    };
                });
 
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                    builder =>
-                    {
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,17 +58,8 @@ namespace Todo.Domain.Api
                 app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseCors();
-            //app.UseCors("AllowAllHeaders");
-            // app.UseCors(x =>
-            // {
-            //     x.AllowAnyOrigin();
-            //     x.AllowAnyMethod();
-            //     x.AllowAnyHeader();
-            // });
-
             app.UseAuthentication();
             app.UseAuthorization();
 

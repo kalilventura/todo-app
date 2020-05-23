@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  public baseUrl = "https://localhost:5001";
+  baseUrl = 'https://localhost:32460';
 
   constructor(
     private http: HttpClient
